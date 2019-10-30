@@ -1,0 +1,248 @@
+<head>
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <style>
+  .border {
+   border-width: 100px;
+  }
+  *{
+  	overflow-x :hidden;
+  }
+  </style>
+</head>
+
+<body>
+  
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="#">Pump Monitoring System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav> 
+
+  
+  
+  <div class = "row mt-2">
+    <div class = "col-md-6 mr-auto border border-secondary " >
+      <button type="button" id = "Button1" class="btn btn-primary mt-3 ml-3 mb-3" value = "1" state ="0">Temperature Vs Time</button> 
+       <div id="Div1"></div>
+    </div>
+
+  <div class = "col-md-6 col-sm-12 border border-secondary">
+      <button type="button" id = "Button2" class="btn btn-primary mt-3 mb-3 " value = "2" state ="0">Humidity Vs Time</button> 
+       <div id="Div2"></div>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-md-6 col-sm-12 mr-auto border border-secondary" >
+      <button type="button" id = "Button3" class="btn btn-primary mt-3 ml-3 mb-3" value = "3" state ="0">Flow Vs Time</button> 
+       <div id="Div3"></div>
+    </div>
+
+  <div class = "col-md-6 border border-secondary">
+      <button type="button" id = "Button4" class="btn btn-primary mt-3 mb-3" value = "4" state ="0">Power Vs Time</button> 
+       <div id="Div4"></div>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-md-6 col-sm-12 mr-auto border border-secondary" >
+      <button type="button" id = "Button5" class="btn btn-primary mt-3 ml-3 mb-3" value = "5" state ="0">Efficiecy Vs Time</button> 
+       <div id="Div5"></div>
+    </div>
+
+  <div class = "col-md-6 border border-secondary">
+      <button type="button" id = "Button6" class="btn btn-primary mt-3 mb-3" value = "6" state ="0">Flow Vs Power</button> 
+       <div id="Div6"></div>
+    </div>
+  </div>
+
+
+</body>
+
+<script type="text/javascript">
+
+
+var noOfGraphs = 6;
+for(i=1; i<=noOfGraphs;i++)
+{
+  $("#Div" + i).slideUp();
+}
+
+$(document).ready(function(){
+  $("button").click(function(){
+    var div = $(this).attr('value');
+    var state = $(this).attr('state')
+    
+    if(state == 0)
+      {
+        $(this).removeClass('btn-primary')
+        $(this).addClass('btn-success');
+        $(this).attr('state',1);
+        $("#Div"+div).slideDown();
+      }
+    else 
+      {
+        $(this).attr('state',0);
+        $(this).removeClass('btn-success')
+        $(this).addClass('btn-primary');
+        $("#Div"+div).slideUp();
+      }
+  });
+});
+
+
+var depthOfpump = 100;
+var power = {{ power }};
+var current = {{ current }};
+var flow = {{ flow }}, humidity = {{ humidity }}, temperature = {{temper}}; 
+var time = {{ time }};
+var efficiency = [];
+
+
+// Data1 flowvspower
+// Data2 efficiencyVStime 
+// Data3 temperatureVStime 
+// Data4 HumidityVStime
+var flowVSpower = { 
+  x: power,
+  y: flow,
+  type: 'line',
+};
+
+var efficiencyVStime = {
+  x: efficiency,
+  y: time,
+  type: 'line'
+};
+
+var flowVstime = {
+  x: flow,
+  y: time,
+  type: 'line'
+}
+
+var powerVStime = {
+  x: time,
+  y: power,
+  type: 'line'
+}
+
+var temperatureVStime =
+{
+  x: time,
+  y: temperature,
+  type: 'line'
+}
+
+var humidityVStime =
+{
+  x: time,
+  y: humidity,
+  type: 'line'
+}
+
+
+
+var data = [temperatureVStime];
+var layout = {
+  title: 'Temperature Vs Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Temperature'
+  }
+};
+Plotly.newPlot('Div1', data, layout);
+
+
+var data1 = [humidityVStime];
+var layout1 = {
+  title: 'Humidity VS Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Humidity'
+  }
+};
+Plotly.newPlot('Div2', data1, layout1);
+
+
+var data2 = [flowVstime];
+var layout2 = {
+  title: 'Flow VS Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Flow'
+  }
+};
+Plotly.newPlot('Div3', data2, layout2);
+
+
+var data3 = [powerVStime];
+var layout3 = {
+  title: 'Power vs Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Power'
+  }
+};
+Plotly.newPlot('Div4', data3, layout3);
+
+var data4 = [efficiencyVStime];
+var layout4 = {
+  title: 'Efficiecy VS Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Efficiecy'
+  }
+};
+Plotly.newPlot('Div5', data4, layout4);
+
+var data5 = [flowVSpower];
+var layout5 = {
+  title: 'Flow VS Power',
+  xaxis: {
+    title: 'Power'
+  },
+  yaxis: {
+    title: 'Flow'
+  }
+};
+Plotly.newPlot('Div6', data5, layout5);
+
+
+</script>
+
+
