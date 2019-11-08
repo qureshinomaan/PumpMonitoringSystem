@@ -43,19 +43,23 @@ def pushData():
 #routes are what we type into browser to get from one webpage to another 
 @app.route("/")
 def home():
-	pushData()
+	# pushData()
 	count = 0
 	data1 = data.query.all()
 	for j in data1:
 		count+=1
-	time 	 = [data1[i].id for i in range(count)]
 	temper   = [data1[i].temperature for i in range(count)]
 	humidity = [data1[i].humidity for i in range(count)]
 	power    = [data1[i].power for i in range(count)]
 	current	 = [data1[i].current for i in range(count)]
 	efficiency = [data1[i].efficiency for i in range(count)]
 	flow     = [data1[i].flow for i in range(count)] 
-	return render_template('home.html', time = time, temper= temper, humidity= humidity, power=power, current= current, efficiency= efficiency, flow=flow)
+	time   	 = [str(data1[i].date.year)+'-'+str(data1[i].date.month)+'-'+
+				str(data1[i].date.day) + ' ' + str(date.hour) + ':' + 
+				str(date.minute) + ':' + str(date.second)
+				for i in range(count)]
+	return render_template('home.html', time = time, temper= temper, humidity= humidity, 
+		power=power, current= current, efficiency= efficiency, flow=flow)
 
 
 

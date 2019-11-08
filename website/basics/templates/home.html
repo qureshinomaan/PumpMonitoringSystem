@@ -42,6 +42,14 @@
   </div>
 </nav> 
 
+<!---- Date Picker ------->
+<form id="dateform">
+  Date: <input type="date" name="bday">
+  <input type="submit">
+</form>
+
+<button type="button" id = "statuspump" class="btn btn-danger mt-3 mb-3 ml-3 " value = "2" state ="0"> Pump is : On</button>
+
   
   
   <div class = "row mt-2">
@@ -71,6 +79,7 @@
   <div class = "row">
     <div class = "col-md-6 col-sm-12 mr-auto border border-secondary" >
       <button type="button" id = "Button5" class="btn btn-primary mt-3 ml-3 mb-3" value = "5" state ="0">Efficiecy Vs Time</button> 
+      <button type="button" id = "statuse" class="btn btn-warning" value = "5" state ="0">Status</button> 
        <div id="Div5"></div>
     </div>
 
@@ -114,19 +123,23 @@ $(document).ready(function(){
   });
 });
 
+//Some vaiables
+var dateshow;
 
+// All Imported things from database shown here.
 var depthOfpump = 100;
 var power = {{ power }};
 var current = {{ current }};
 var flow = {{ flow }}, humidity = {{ humidity }}, temperature = {{temper}}; 
 var time = {{ time }};
-var efficiency = [];
+var efficiency = {{ efficiency }};
+console.log(efficiency.length)
 
+// Status of efficiency. 
+//Graphs we are planning to make.
+//Bar graph of total litres vs time.
 
-// Data1 flowvspower
-// Data2 efficiencyVStime 
-// Data3 temperatureVStime 
-// Data4 HumidityVStime
+// Graphs data
 var flowVSpower = { 
   x: power,
   y: flow,
@@ -241,6 +254,32 @@ var layout5 = {
   }
 };
 Plotly.newPlot('Div6', data5, layout5);
+
+
+
+$(document).ready(function() {
+  $("#dateform").submit(function(event) {
+  dateshow =  $( "input" ).first().val();
+  console.log(dateshow)
+  event.preventDefault();
+  });
+
+});
+// Updating status.
+ 
+$(document).ready(function(){
+  if(efficiency.length>0)
+  {
+    if(efficiency[efficiency.length-1] > 0.75)
+      $("#statuse").addClass('btn-primary');
+    else if(efficiency[efficiency.length-1] > 0.5)
+      $("#statuse").addClass('btn-danger');
+    else if(efficiency[efficiency.length-1] <= 0.5)
+      $("#statuse").addClass('btn-warning');
+  }
+});
+
+
 
 
 </script>
