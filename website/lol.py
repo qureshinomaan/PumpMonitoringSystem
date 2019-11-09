@@ -51,15 +51,15 @@ def lolzzmax():
     # lolmax = ["cin-229194911","cin-579827981","cin-673596909","cin-908656360","cin-135702940","cin-194036731","cin-224337796","cin-663036154","cin-607168659","cin-300626290","cin-437808807","cin-206555887","cin-694033785","cin-929807794","cin-523436562","cin-326722888","cin-926523147","cin-893147305","cin-743052870","cin-619630128","cin-845549682","cin-352092827","cin-573000","cin-760647355","cin-496254588","cin-985865973","cin-596239741","cin-387678041","cin-966246806","cin-68365922","cin-139873022","cin-58893555","cin-82604358","cin-890319430","cin-663204530","cin-308935905","cin-52948287","cin-621225097","cin-36919482","cin-652596662","cin-702325456","cin-526532606","cin-533182969","cin-836927878","cin-468499223","cin-713411091","cin-296203462","cin-116994105","cin-376560133","cin-424255739","cin-369943044","cin-872613922","cin-532464376","cin-442864255","cin-298542321","cin-168510522","cin-987148555","cin-578906895","cin-567258119","cin-658633709","cin-262093831","cin-419570667","cin-49467491","cin-894716859","cin-975363990"]
     # lolmax = ["cin-7846594","cin-129428309","cin-425308612","cin-681769326","cin-180660987","cin-615797706","cin-711011732","cin-646448748","cin-446046008","cin-489916439","cin-662253036","cin-356438620","cin-873801687","cin-350570148","cin-753283241","cin-943057276","cin-149311142","cin-682385221","cin-874355247","cin-122089710","cin-404395344","cin-458940845","cin-499597201","cin-821282516","cin-891362873","cin-783263396","cin-370064075","cin-664600770","cin-403818736","cin-120098323","cin-172371465","cin-242244400","cin-777043774","cin-907862434","cin-125062589","cin-753121620","cin-651243518","cin-782216644","cin-672998652","cin-544628971","cin-912457708","cin-471067406","cin-708312563","cin-268132789","cin-210285581","cin-848628726","cin-100228340","cin-393098626","cin-501916894","cin-6812277","cin-109677905","cin-376582043","cin-339498506","cin-973825337","cin-162685921","cin-556008366","cin-216795330","cin-392115296","cin-278665838","cin-533526866","cin-693916787","cin-216349643","cin-362985247","cin-852528017","cin-411531797","cin-789158054","cin-724781856","cin-678800763","cin-570048874","cin-807290482","cin-833636051","cin-341975138","cin-594302398","cin-301252346","cin-905489472","cin-740408027","cin-329085972","cin-676729801","cin-270336081","cin-580827857","cin-536470090","cin-339782867","cin-541116498","cin-960955003","cin-835317130","cin-157220454","cin-643591395","cin-847277511","cin-810198326","cin-8716144","cin-828833460","cin-386594874","cin-636888493","cin-542120208","cin-274252450","cin-706406075","cin-892787621","cin-327979604","cin-961004342","cin-937522115","cin-950698852","cin-673528713","cin-93339823","cin-756251912","cin-753846001","cin-778080234","cin-764687624","cin-981455337","cin-193675857","cin-461176171","cin-815482094","cin-894731128","cin-842921332","cin-286676178","cin-550670942","cin-786604726","cin-693213549","cin-671788416","cin-378647313","cin-101932338","cin-160241095","cin-912426100","cin-3130823","cin-677866876","cin-419978766","cin-320449493","cin-759178445","cin-992638337","cin-362827981","cin-531315598","cin-503231473","cin-222144426","cin-939216524","cin-500387365","cin-709558002","cin-148511070","cin-334114225","cin-557599737","cin-402731526","cin-322532190","cin-186488967","cin-495413370","cin-659144118","cin-423069182","cin-515474368","cin-802840475","cin-284983724","cin-735346993","cin-244069092","cin-227605452","cin-832083756","cin-780819235","cin-793459664","cin-224203376","cin-980378523","cin-31597220","cin-18623306","cin-967271447","cin-524273991","cin-560960694","cin-366619623","cin-675142309","cin-192533461","cin-68749410","cin-773266655","cin-582333064","cin-885998238","cin-896397976","cin-849429575","cin-225189643","cin-555972400","cin-553084390","cin-238427402","cin-740364486","cin-574025349","cin-472425225","cin-228518176","cin-621018206","cin-297150207","cin-616577770","cin-687997570","cin-208182441","cin-280718578","cin-560482817","cin-365396872","cin-682314099","cin-851970256","cin-147423642","cin-216396384","cin-698001593","cin-654913552","cin-893485681","cin-31319317","cin-377182187","cin-38601012","cin-997670546","cin-556685297","cin-359854133","cin-606592439","cin-850029068","cin-455393036","cin-772174183","cin-115981435","cin-952224939","cin-474631836","cin-45771226","cin-243202128","cin-294595522","cin-106980226","cin-765154199","cin-988123221","cin-365270953","cin-109774151","cin-940288691","cin-178057492","cin-244351785","cin-44481287","cin-127162385","cin-185239155","cin-852479870","cin-724079613","cin-733389947","cin-864439956","cin-790743356","cin-269501231","cin-906007833","cin-638096102","cin-621814833","cin-604781869","cin-390647148","cin-748771238","cin-721063273","cin-907851984","cin-831501139","cin-122200944","cin-115939922","cin-196004215","cin-461287690","cin-435999260","cin-768939520","cin-535166338","cin-184102624","cin-307986578","cin-839143760","cin-668777701","cin-162069367","cin-273306831","cin-215866201","cin-250267800","cin-978044356","cin-26737090","cin-162947604","cin-913233290","cin-780440585","cin-560714597","cin-173230197","cin-336237621","cin-588658898","cin-69013817","cin-928269366","cin-407516848","cin-122768831","cin-885159787","cin-671347804","cin-870116702","cin-404054567","cin-336138618","cin-995657692","cin-654063549","cin-914944395","cin-177662818","cin-265726649","cin-826601935","cin-555941948","cin-938289429","cin-188031081","cin-616429282","cin-512795237","cin-474890266"]
     # lolmax = ["cin-775866088","cin-813645806","cin-575428497","cin-719890287","cin-233643401","cin-181453534","cin-532599151","cin-698614347","cin-324710110","cin-536671261","cin-576974178","cin-81974221","cin-357661807","cin-43488307","cin-452428200","cin-538279862","cin-766448777","cin-125584409","cin-830134968","cin-548951553","cin-465630767","cin-21097377","cin-352674984","cin-181864393","cin-273086800","cin-298338695","cin-982547861","cin-612272763","cin-836728257","cin-271232259","cin-291190729","cin-645295783","cin-282950043","cin-350156771","cin-310864093","cin-469155480","cin-102695825","cin-405262614","cin-250364351","cin-484848336","cin-386443603","cin-862927234","cin-944138208","cin-502582245","cin-1116510","cin-69579727","cin-775229322","cin-731499018","cin-448174662","cin-657672226","cin-125301650","cin-934677843","cin-267685555","cin-209537677","cin-483127342","cin-195963938","cin-860602924","cin-52664787","cin-378122457","cin-511930532","cin-693552","cin-947746164","cin-15768630","cin-926146342","cin-417775217","cin-311638922","cin-427627501","cin-947429009","cin-306463493","cin-77528767","cin-33476018","cin-646273973","cin-344845106","cin-515413316","cin-735587647","cin-332088197","cin-209901157","cin-304376078","cin-165713827","cin-822110547","cin-580397266","cin-425876984","cin-426262204","cin-309803320","cin-358378326","cin-465691002","cin-480884221","cin-393886586","cin-983503602","cin-519708442","cin-857437283","cin-667191628","cin-844747233","cin-825030290","cin-850599472","cin-994518901","cin-36820721","cin-655133777","cin-942008807","cin-738388514","cin-324449345","cin-90428489","cin-229068674","cin-124099474","cin-587250735","cin-109151975","cin-298837682","cin-364152838","cin-766422689","cin-209299720","cin-221947657","cin-536563087","cin-722064681","cin-564059949","cin-180993672","cin-705769812","cin-604400045","cin-624062513","cin-663754228","cin-197861389","cin-629385182","cin-336296702","cin-955295676","cin-806339865","cin-501513679","cin-244588207","cin-368115882","cin-771098485","cin-276664658","cin-639453623","cin-48492299","cin-384214897"]
-    lolmax = discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-902636175")[1];
+    lolmax = discovery("http://onem2m.iiit.ac.in/~/in-cse/cnt-902636175")[1];
 
     # get-data-group("cin-511906753")
-    # get_data_group("http://onem2m.iiit.ac.in:443/~/in-cse/cin-775866088");
+    # get_data_group("http://onem2m.iiit.ac.in/~/in-cse/cin-775866088");
     for i in lolmax:
         print(i)
         if(i[8:11] == "cnt"):
             continue
-        get_data_grp("http://onem2m.iiit.ac.in:443/~" + i)
+        get_data_grp("http://onem2m.iiit.ac.in/~" + i)
     # for j in 
     comp = convert_to_time("20191106T000000")
     oe_temp.sort()
@@ -69,15 +69,15 @@ def lolzzmax():
             oe_temp1.append([convert_to_time(j[0]), j[1]])
 
     oe_temp.clear()
-    lolmax = discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-256133761")[1];
+    lolmax = discovery("http://onem2m.iiit.ac.in/~/in-cse/cnt-256133761")[1];
 
     # get-data-group("cin-511906753")
-    # get_data_group("http://onem2m.iiit.ac.in:443/~/in-cse/cin-775866088");
+    # get_data_group("http://onem2m.iiit.ac.in/~/in-cse/cin-775866088");
     for i in lolmax:
         print(i)
         if(i[8:11] == "cnt"):
             continue
-        get_data_grp("http://onem2m.iiit.ac.in:443/~" + i)
+        get_data_grp("http://onem2m.iiit.ac.in/~" + i)
     # for j in 
     comp = convert_to_time("20191106T000000")
     oe_temp.sort()
@@ -88,15 +88,15 @@ def lolzzmax():
             
 
     oe_temp.clear()
-    lolmax = discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-331059742")[1];
+    lolmax = discovery("http://onem2m.iiit.ac.in/~/in-cse/cnt-331059742")[1];
 
     # get-data-group("cin-511906753")
-    # get_data_group("http://onem2m.iiit.ac.in:443/~/in-cse/cin-775866088");
+    # get_data_group("http://onem2m.iiit.ac.in/~/in-cse/cin-775866088");
     for i in lolmax:
         print(i)
         if(i[8:11] == "cnt"):
             continue
-        get_data_grp("http://onem2m.iiit.ac.in:443/~" + i)
+        get_data_grp("http://onem2m.iiit.ac.in/~" + i)
     # for j in 
     comp = convert_to_time("20191106T000000")
     oe_temp.sort()
@@ -106,15 +106,15 @@ def lolzzmax():
             oe_temp3.append(j[1])
 
     oe_temp.clear()
-    lolmax = discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-244479154")[1];
+    lolmax = discovery("http://onem2m.iiit.ac.in/~/in-cse/cnt-244479154")[1];
 
     # get-data-group("cin-511906753")
-    # get_data_group("http://onem2m.iiit.ac.in:443/~/in-cse/cin-775866088");
+    # get_data_group("http://onem2m.iiit.ac.in/~/in-cse/cin-775866088");
     for i in lolmax:
         print(i)
         if(i[8:11] == "cnt"):
             continue
-        get_data_grp("http://onem2m.iiit.ac.in:443/~" + i)
+        get_data_grp("http://onem2m.iiit.ac.in/~" + i)
     # for j in 
     comp = convert_to_time("20191106T000000")
     oe_temp.sort()
@@ -124,15 +124,15 @@ def lolzzmax():
             oe_temp4.append(j[1])
 
     oe_temp.clear()
-    lolmax = discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-236279470")[1];
+    lolmax = discovery("http://onem2m.iiit.ac.in/~/in-cse/cnt-236279470")[1];
 
     # get-data-group("cin-511906753")
-    # get_data_group("http://onem2m.iiit.ac.in:443/~/in-cse/cin-775866088");
+    # get_data_group("http://onem2m.iiit.ac.in/~/in-cse/cin-775866088");
     for i in lolmax:
         print(i)
         if(i[8:11] == "cnt"):
             continue
-        get_data_grp("http://onem2m.iiit.ac.in:443/~" + i)
+        get_data_grp("http://onem2m.iiit.ac.in/~" + i)
     # for j in 
     comp = convert_to_time("20191106T000000")
     oe_temp.sort()
@@ -142,15 +142,15 @@ def lolzzmax():
             oe_temp5.append(j[1])       
 
     oe_temp.clear()
-    lolmax = discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-305446869")[1];
+    lolmax = discovery("http://onem2m.iiit.ac.in/~/in-cse/cnt-305446869")[1];
 
     # get-data-group("cin-511906753")
-    # get_data_group("http://onem2m.iiit.ac.in:443/~/in-cse/cin-775866088");
+    # get_data_group("http://onem2m.iiit.ac.in/~/in-cse/cin-775866088");
     for i in lolmax:
         print(i)
         if(i[8:11] == "cnt"):
             continue
-        get_data_grp("http://onem2m.iiit.ac.in:443/~" + i)
+        get_data_grp("http://onem2m.iiit.ac.in/~" + i)
     # for j in 
     comp = convert_to_time("20191106T000000")
     oe_temp.sort()
@@ -193,7 +193,7 @@ for i in final:
     efficiency = 0
     if float(i[6]) >0.5:
         efficiency = (float(i[3])*20*60)/(367*float(i[6]))
-    data1 = data(temperature = i[1], humidity = i[2], flow = i[3], voltage = i[4], current = i[5], power=i[6], efficiency = efficiency*100, Time = i[0])
+    data1 = data(temperature = i[1], humidity = i[2], flow = i[3], voltage = i[4], current = i[5], power=i[6], efficiency = efficiency, Time = i[0])
     db.session.add(data1)
     db.session.commit()
 

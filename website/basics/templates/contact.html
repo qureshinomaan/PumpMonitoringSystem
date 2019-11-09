@@ -1,0 +1,367 @@
+<head>
+  <!-- Plotly.js -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <style>
+  .border {
+   border-width: 100px;
+  }
+  *{
+  	overflow-x :hidden;
+  }
+  </style>
+</head>
+
+<body>
+  
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="/">Pump Monitoring System</a>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav> 
+
+<div class="ml-3 mt-3" >
+  Jay Sharma : jay.sharma@students.iiit.ac.in
+  <br> 
+  Dhruv Arya : dhruv.arya@students.iiit.ac.in
+  
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+
+var noOfGraphs = 8;
+for(i=1; i<=noOfGraphs;i++)
+{
+  $("#Div" + i).slideUp();
+}
+
+$(document).ready(function(){
+  $("button").click(function(){
+    var div = $(this).attr('value');
+    var state = $(this).attr('state')
+    
+    if(state == 0)
+      {
+        $(this).removeClass('btn-primary')
+        $(this).addClass('btn-success');
+        $(this).attr('state',1);
+        $("#Div"+div).slideDown();
+      }
+    else 
+      {
+        $(this).attr('state',0);
+        $(this).removeClass('btn-success')
+        $(this).addClass('btn-primary');
+        $("#Div"+div).slideUp();
+      }
+  });
+});
+
+//Some vaiables
+var dateshow;
+
+// All Imported things from database shown here.
+var depthOfpump = 100;
+var power = {{ power }};
+var current = {{ current }};
+var flow = {{ flow }}, humidity = {{ humidity }}, temperature = {{temper}}; 
+var time = {{ time|safe }};
+var efficiency = {{ efficiency }};
+var litres = [];
+console.log("here")
+for( var i = 0 ; i < efficiency.length; i++)
+{
+  litres.push(flow[i]*10);
+}
+
+// Status of efficiency. 
+//Graphs we are planning to make.
+//Bar graph of total litres vs time.
+// Types of the question we can answer. 
+// At what time of the day generally the pump works. 
+    //Answered by the data. 
+// At what days water is used more. 
+    //Have to devise something.
+
+// Graphs data
+var flowVSpower = { 
+  x: power,
+  y: flow,
+  type: 'line',
+};
+
+var efficiencyVStime = {
+  x: time,
+  y: efficiency,
+  type: 'line'
+};
+
+var flowVstime = {
+  x: time,
+  y: flow,
+  type: 'bar'
+};
+
+var powerVStime = {
+  x: time,
+  y: power,
+  type: 'scatter'
+};
+
+var temperatureVStime =
+{
+  x: time,
+  y: temperature,
+  mode : 'markers'
+}
+
+var humidityVStime =
+{
+  x: time,
+  y: humidity,
+  type: 'line'
+};
+
+var litresvstime =
+{
+  x: time, 
+  y: litres,
+  type: 'line'
+};
+
+
+
+
+var data = [temperatureVStime];
+var layout = {
+  title: 'Temperature Vs Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Temperature'
+  },
+  marker: {
+    color: 'rgba(156, 165, 196, 0.95)',
+    line: {
+      color: 'rgba(156, 165, 196, 1.0)',
+      width: 1,
+    },
+    symbol: 'circle',
+    size: 16
+  }
+};
+Plotly.newPlot('Div1', data, layout);
+
+
+var data1 = [humidityVStime];
+var layout1 = {
+  title: 'Humidity VS Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Humidity'
+  }
+};
+Plotly.newPlot('Div2', data1, layout1);
+
+
+var data2 = [flowVstime];
+var layout2 = {
+  title: 'Flow VS Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Flow'
+  }
+};
+Plotly.newPlot('Div3', data2, layout2);
+
+
+var data3 = [powerVStime];
+var layout3 = {
+  title: 'Power vs Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Power'
+  }
+};
+Plotly.newPlot('Div4', data3, layout3);
+
+var data4 = [efficiencyVStime];
+var layout4 = {
+  title: 'Efficiecy VS Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Efficiecy'
+  }
+};
+Plotly.newPlot('Div5', data4, layout4);
+
+var data5 = [flowVSpower];
+var layout5 = {
+  title: 'Flow VS Power',
+  xaxis: {
+    title: 'Power'
+  },
+  yaxis: {
+    title: 'Flow'
+  }
+};
+Plotly.newPlot('Div6', data5, layout5);
+
+
+var data6 = [litresvstime];
+var layout = {
+  title: 'Litres Vs Time',
+  xaxis: {
+    title: 'Time'
+  },
+  yaxis: {
+    title: 'Liters'
+  }
+};
+Plotly.newPlot('Div7', data, layout);
+
+
+$(document).ready(function() {
+  $("#dateform").submit(function(event) {
+  dateshow =  $( "input" ).first().val();
+  console.log(dateshow[0])
+  event.preventDefault();
+  });
+
+});
+// Updating status.
+ 
+$(document).ready(function(){
+  if(efficiency.length>0)
+  {
+    if(efficiency[efficiency.length-1] > 0.75 && current[current.length]<0.5)
+      {
+        $("#statuse").addClass('btn-primary');
+        $("#statusflow").addClass('btn-primary');
+        $("#statusliters").addClass('btn-primary')
+      }
+    else if(efficiency[efficiency.length-1] > 0.5 && current[current.length]<0.5)
+      {
+        $("#statuse").addClass('btn-warning');
+        $("#statusflow").addClass('btn-warning');
+        $("#statusliters").addClass('btn-warning')
+      }
+    else if(efficiency[efficiency.length-1] <= 0.5 && current[current.length]<0.5)
+      {
+        $("#statuse").addClass('btn-danger');
+        $("#statusflow").addClass('btn-danger');
+        $("#statusliters").addClass('btn-danger')
+      }
+
+    else 
+      {
+        $("#statuse").addClass('btn-dark');
+        $("#statusflow").addClass('btn-dark');
+        $("#statusliters").addClass('btn-dark')
+      }
+  }
+  if(current.length > 0)
+  {
+    if(flow[current.length-1] < 0.5 && flow[current.length - 1] < 0.5)
+      {
+        $("#statuspump").html("Pump Is : OFF");
+        $("#statuspump").addClass('btn-danger');
+      }
+    else 
+     { 
+        $("#statuspump").html("Pump Is : ON");
+        $("#statuspump").addClass('btn-primary');
+    }
+  }
+  if(temperature.length >0)
+  {
+    if(temperature[temperature.length-1] > 35)
+    {
+      $("#statustemp").html("Hot");
+      $("#statustemp").addClass('btn-danger');
+    }
+    else if(temperature[temperature.length-1] > 15)
+    {
+      $("#statustemp").html("Moderate");
+      $("#statustemp").addClass('btn-info');
+    }
+    else 
+    {
+      $("#statustemp").html("Cool");
+      $("#statustemp").addClass('btn-primary');
+    }
+  }
+  if(humidity.length > 0)
+  {
+    if(humidity[humidity.length-1] > 80)
+      {
+        $("#statushumidity").html("Too Much");
+        $("#statushumidity").addClass('btn-danger');
+      }
+    else if(humidity[humidity.length-1] > 60)
+      {
+        $("#statushumidity").html("High");
+        $("#statushumidity").addClass('btn-info');
+      }
+    else if(humidity[humidity.length-1] > 30)
+      {
+        $("#statushumidity").html("Moderate");
+        $("#statushumidity").addClass('btn-primary');
+      }
+    else 
+      {
+        $("#statushumidity").html("Low");
+        $("#statushumidity").addClass('btn-danger');
+      }
+    } 
+
+  if(power.length > 0)
+  {
+    if(power[power.length-1] > 1000 && current[current.length-1] < 0.5)
+    {
+      $("#statusFailure").html('Power:Failure');
+      $("#statusFailure").addClass('btn-danger');
+    }
+  }
+
+
+});
+
+
+
+
+</script>

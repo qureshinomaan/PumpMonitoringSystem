@@ -36,19 +36,20 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
+        <a class="nav-link" href="/contact">Contact</a>
       </li>
     </ul>
   </div>
 </nav> 
 
 <!---- Date Picker ------->
-<form id="dateform" class="ml-3">
+<form id="dateform" class="ml-3 mt-3">
   Date: <input type="date" name="bday" >
   <input type="submit">
 </form>
 
 <button id = "statuspump" class="btn btn-danger mt-3 mb-3 ml-3 "> Pump is : Off</button>
+<button id = "statusFailure" class="btn btn-success mt-3 mb-3 ml-3 ">Power: Normal</button>
 
   
   
@@ -156,6 +157,8 @@ var litres = [];
 console.log("here")
 for( var i = 0 ; i < efficiency.length; i++)
 {
+  efficiency[i] = efficiency[i]*45;
+  flow[i] = flow[i] *45;
   litres.push(flow[i]*10);
 }
 
@@ -172,13 +175,13 @@ for( var i = 0 ; i < efficiency.length; i++)
 var flowVSpower = { 
   x: power,
   y: flow,
-  type: 'line',
+  mode : 'markers',
 };
 
 var efficiencyVStime = {
   x: time,
   y: efficiency,
-  type: 'line'
+  mode: 'markers'
 };
 
 var flowVstime = {
@@ -285,6 +288,15 @@ var layout4 = {
   },
   yaxis: {
     title: 'Efficiecy'
+  },
+  marker: {
+    color: 'rgba(156, 165, 196, 0.95)',
+    line: {
+      color: 'rgba(156, 165, 196, 1.0)',
+      width: 1,
+    },
+    symbol: 'circle',
+    size: 16
   }
 };
 Plotly.newPlot('Div5', data4, layout4);
@@ -387,20 +399,20 @@ $(document).ready(function(){
   }
   if(humidity.length > 0)
   {
-    if(humidity[humidity.length-1] > 80)
+    if(humidity[humidity.length-1] > 90)
       {
         $("#statushumidity").html("Too Much");
         $("#statushumidity").addClass('btn-danger');
       }
-    else if(humidity[humidity.length-1] > 60)
+    else if(humidity[humidity.length-1] > 80)
       {
         $("#statushumidity").html("High");
         $("#statushumidity").addClass('btn-info');
       }
-    else if(humidity[humidity.length-1] > 30)
+    else if(humidity[humidity.length-1] > 40)
       {
         $("#statushumidity").html("Moderate");
-        $("#statushumidity").addClass('btn-primary');
+        $("#statushumidity").addClass('btn-info');
       }
     else 
       {
@@ -408,6 +420,15 @@ $(document).ready(function(){
         $("#statushumidity").addClass('btn-danger');
       }
     } 
+
+  if(power.length > 0)
+  {
+    if(power[power.length-1] > 1000 && current[current.length-1] < 0.5)
+    {
+      $("#statusFailure").html('Power:Failure');
+      $("#statusFailure").addClass('btn-danger');
+    }
+  }
 
 
 });
