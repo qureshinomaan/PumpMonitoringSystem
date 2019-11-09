@@ -18,8 +18,9 @@ class data(db.Model):
 	temperature = db.Column(db.Float, nullable=False)
 	humidity = db.Column(db.Float, nullable=False)
 	flow = db.Column(db.Float,nullable=False)
-	power = db.Column(db.Float,nullable =False)
+	voltage = db.Column(db.Float,nullable=False)
 	current = db.Column(db.Float, nullable =False)
+	power = db.Column(db.Float,nullable =False)
 	efficiency = db.Column(db.Float, nullable =False)
 	Time = db.Column(db.DateTime, nullable=False, default =datetime.utcnow())
 

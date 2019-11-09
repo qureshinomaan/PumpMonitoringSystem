@@ -4,26 +4,25 @@ import requests
 import json
 import time
 
+# ====================================================
+# Delete an AE
+
 
 def delete_ae(uri, data_format="json"):
-    """
-        Method description:
-        Deletes/Unregisters an application entity(AE) from the OneM2M framework/tree
-        under the specified CSE
 
-        Parameters:
-        uri_cse : [str] URI of parent CSE
-        ae_name : [str] name of the AE
-        fmt_ex : [str] payload format
-    """
     headers = {
         'X-M2M-Origin': 'admin:admin',
         'Content-type': 'application/{}'.format(data_format)}
 
     response = requests.delete(uri, headers=headers)
     print('Return code : {}'.format(response.status_code))
-    print('Return Content : {}'.format(response.text))
+    #print('Return Content : {}'.format(response.text))
     return
+# ====================================================
+
+
+# ====================================================
+# Register an AE
 
 
 def register_ae(uri_cse, ae_name, labels="", fmt_ex="json"):
@@ -41,12 +40,12 @@ def register_ae(uri_cse, ae_name, labels="", fmt_ex="json"):
 
     headers = {
         'X-M2M-Origin': 'admin:admin',
-        'Content-type': 'application/{};ty=2'.format(fmt_ex)}
+        'Content-type': 'application/{};ty=2    '.format(fmt_ex)}
 
     payload = {
         "m2m:ae": {
             "rn": "{}".format(ae_name),
-            "api": "tap",
+            "api": "app-sensor",
             "rr": "true",
             "lbl": labels
         }
@@ -55,6 +54,11 @@ def register_ae(uri_cse, ae_name, labels="", fmt_ex="json"):
     response = requests.post(uri_cse, json=payload, headers=headers)
     print('Return code : {}'.format(response.status_code))
     print('Return Content : {}'.format(response.text))
+
+# ====================================================
+
+# ====================================================
+# Create a DESCRIPTOR/DATA CNT (based on cnt_name passed)
 
 
 def create_cnt(uri_ae, cnt_name="", fmt_ex="json"):
@@ -83,6 +87,12 @@ def create_cnt(uri_ae, cnt_name="", fmt_ex="json"):
     response = requests.post(uri_ae, json=payload, headers=headers)
     print('Return code : {}'.format(response.status_code))
     print('Return Content : {}'.format(response.text))
+
+
+# ====================================================
+
+# ====================================================
+# Create a DESCRIPTOR CIN
 
 
 def create_descriptor_cin(uri_con, fmt_ex="json"):
@@ -124,8 +134,12 @@ def create_descriptor_cin(uri_con, fmt_ex="json"):
     response = requests.post(uri_con, json=data, headers=headers)
     print('Return code : {}'.format(response.status_code))
     print('Return Content : {}'.format(response.text))
+# ====================================================
+
+# ====================================================
 
 
+# Create a DATA CIN
 def create_data_cin(uri_cnt, value, fmt_ex="json"):
     """
         Method description:
@@ -156,26 +170,27 @@ def create_data_cin(uri_cnt, value, fmt_ex="json"):
 # ====================================================
 
 
-
-
-# ====================================================
-
-
-def discovery(uri, format="json"):
-    """
-        Method description:
-        Returns a string of URIs separated by space
-        from the OneM2M framework/tree
-
-        Parameters:
-        uri : [str] URI for the server appended by filter parameters
-        fmt_ex : [str] payload format (json/XML)
-    """
+def get_data(uri, format="json"):
     headers = {
         'X-M2M-Origin': 'admin:admin',
         'Content-type': 'application/json'}
 
     response = requests.get(uri, headers=headers)
+    # print('Return code : {}'.format(response.status_code))
+    #print('Return Content : {}'.format(response.text))
+    _resp = json.loads(response.text)
+    return response.status_code, _resp["m2m:cin"]["con"]
+
+# ====================================================
+
+
+def discovery(uri, format="json"):
+    headers = {
+        'X-M2M-Origin': 'admin:admin',
+        'Content-type': 'application/json'}
+
+    #response = requests.get(uri, headers=headers)
+    response = requests.get(uri+"?fu=1&rty=3&drt=2", headers=headers)
     print('Return code : {}'.format(response.status_code))
     print('Return Content : {}'.format(response.text))
     _resp = json.loads(response.text)
@@ -185,31 +200,15 @@ def discovery(uri, format="json"):
 
 
 def get_filtered_uri(uri, filter=""):
-    """
-        Method description:
-        Splits the string into a list of URIs
-
-        Parameters:
-        uri : [str] URI for the parent DATA CON appended by "la" or "ol"
-        fmt_ex : [str] payload format (json/XML)
-    """
     _, filtered_uri = discovery(uri)
+    # _, filtered_uri = discovery(server+cse+"?fu=1&"+filter)
     filtered_uri_list = filtered_uri.split(" ")
-    print(filtered_uri_list)
+    # print(filtered_uri_list)
     return filtered_uri_list
 
 
 def create_group_ae(cse_uri, group_name, uri_list):
-    """
-        Method description:
-        Creates an AE that groups various other specifies AEs in the OneM2M framework/tree
-        under the specified DATA CON
-
-        Parameters:
-        uri : [str] URI for the parent DATA CON appended by "la" or "ol"
-        fmt_ex : [str] payload format (json/XML)
-    """
-
+    # uri_list = [cse_uri+x.split("/")[-1]+"/DATA"]
     headers = {
         'X-M2M-Origin': 'admin:admin',
         'Content-type': 'application/json;ty=9'
@@ -230,7 +229,21 @@ def create_group_ae(cse_uri, group_name, uri_list):
     print('Return Content : {}'.format(response.text))
 
 
-if __name__ == "__main__":
-    server = "http://192.168.1.233:8080"
-    cse = "/~/in-cse/in-name/"
-    print(get_data("http://139.59.42.21:8080/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_temperature/la")[1])
+def get_data_group(group_name):
+    headers = {
+        'X-M2M-Origin': 'admin:admin',
+        'Content-type': 'application/json'
+    }
+
+    group_uri = server+cse+group_name+"/fopt/la"
+    response = requests.get(group_uri, headers=headers)
+    # print('Return code : {}'.format(response.status_code))
+    #print('Return Content : {}'.format(response.text))
+    _resp = json.loads(response.text)
+    return response.status_code, _resp
+
+
+# if __name__ == "__main__":
+    # server = "http://192.168.1.233:8080"
+    # cse = "/~/in-cse/in-name/"
+    # discovery("http://onem2m.iiit.ac.in:443/~/in-cse/cnt-615010810");

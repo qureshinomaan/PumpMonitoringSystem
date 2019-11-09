@@ -1,0 +1,8 @@
+Hello world. Chai peelo. 
+
+
+Front End
+### We used flask framework to build a webapp.
+### Sqlite database is used to store the data locally on the server. 
+### We used flask because it provides simplicity, flexibility and fine-grained 	control.
+### We used sqlite database becuase it emphasizes scalability, concurrency, centralization.
