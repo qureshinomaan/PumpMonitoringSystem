@@ -6,3 +6,20 @@ Front End
 ### Sqlite database is used to store the data locally on the server. 
 ### We used flask because it provides simplicity, flexibility and fine-grained 	control.
 ### We used sqlite database becuase it emphasizes scalability, concurrency, centralization.
+
+
+
+
+### Plotly.js library is used to plot the datapoints. 
+### We plotted Graphs which include
+	### Temperature VS Time
+	### Humidity VS Time
+	### Flow VS Time 
+	### Efficiency vs Time 
+	etc
+### From the color of the status button, we can know the state of the system. 
+	### Black means system is off. 
+	### Green means attribute is working properly.
+	### Yellow means attribute is in a state near breakdown. 
+	### Red means attribute is in a breakdown state. 
+	

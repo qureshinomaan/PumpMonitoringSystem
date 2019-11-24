@@ -1,3 +1,5 @@
+from datetime import datetime
+import calendar
 import requests
 import threading
 import json
@@ -7,6 +9,12 @@ from flask import flash, redirect, url_for
 from flask import render_template
 from basics import app
 from basics import db, data
+
+
+def findDay(date): 
+    born = datetime.datetime.strptime(date, '%d %m %Y').weekday() 
+    return (calendar.day_name[born]) 
+
 
 def get_data(uri, format="json"):
     """
@@ -39,7 +47,6 @@ def pushData():
 	print("commited")
 
 
-
 #routes are what we type into browser to get from one webpage to another 
 @app.route("/")
 def home():
@@ -58,8 +65,14 @@ def home():
 				str(data1[i].Time.day) + ' ' + str(data1[i].Time.hour) + ':' + 
 				str(data1[i].Time.minute) + ':' + str(data1[i].Time.second)
 				for i in range(count)]
+	# days	 = [str(data[i].weekday()) for i in range(count)]
+	weekday = []
+	for i in range(count):
+		sample = datetime(data1[i].Time.year, data1[i].Time.month, data1[i].Time.day,
+			data1[i].Time.hour,data1[i].Time.minute, data1[i].Time.second, 1)
+		weekday.append(sample.weekday())
 	return render_template('home.html', time = time, temper= temper, humidity= humidity, 
-		power=power, current= current, efficiency= efficiency, flow=flow)
+		power=power, current= current, efficiency= efficiency, flow=flow, weekday=weekday)
 
 
 

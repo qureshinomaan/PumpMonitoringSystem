@@ -42,11 +42,6 @@
   </div>
 </nav> 
 
-<!---- Date Picker ------->
-<form id="dateform" class="ml-3 mt-3">
-  Date: <input type="date" name="bday" >
-  <input type="submit">
-</form>
 
 <button id = "statuspump" class="btn btn-danger mt-3 mb-3 ml-3 "> Pump is : Off</button>
 <button id = "statusFailure" class="btn btn-success mt-3 mb-3 ml-3 ">Power: Normal</button>
@@ -105,7 +100,7 @@
 
 
   <div class = "col-md-6 border border-secondary">
-      <button type="button" id = "Button8" class="btn btn-primary mt-3 mb-3" value = "8" state ="0">Flow Vs Power</button> 
+      <button type="button" id = "Button8" class="btn btn-primary mt-3 mb-3" value = "8" state ="0">Litres Consumed VS Day</button> 
        <div id="Div8"></div>
     </div>
   </div>
@@ -114,7 +109,7 @@
 
 <script type="text/javascript">
 
-
+var litersperday = [0, 0, 0, 0, 0, 0, 0];
 var noOfGraphs = 8;
 for(i=1; i<=noOfGraphs;i++)
 {
@@ -147,19 +142,25 @@ $(document).ready(function(){
 var dateshow;
 
 // All Imported things from database shown here.
+// var weekdays = {{days}};
 var depthOfpump = 100;
 var power = {{ power }};
 var current = {{ current }};
 var flow = {{ flow }}, humidity = {{ humidity }}, temperature = {{temper}}; 
 var time = {{ time|safe }};
 var efficiency = {{ efficiency }};
+var weekday = {{weekday}}
 var litres = [];
+for(var i=0; i<weekday.length-1;i++)
+{
+  litres[i] = flow[i]*5;
+  litersperday[weekday[i]]+=litres[i];
+}
 console.log("here")
 for( var i = 0 ; i < efficiency.length; i++)
 {
   efficiency[i] = efficiency[i]*45;
   flow[i] = flow[i] *45;
-  litres.push(flow[i]*10);
 }
 
 // Status of efficiency. 
@@ -218,6 +219,31 @@ var litresvstime =
 };
 
 
+
+// for( var i =0; i<litres.length-1;i++)
+// {
+//   litersperday[weekdays[i]] += litres[i];
+// }
+
+var days = ["Monday", "Tuesday", "Wednesay","Thursday","Friday","Saturday", "  Sunday"];
+
+var litresperday =
+{
+  x: days, 
+  y: litersperday,
+  type: 'bar'
+};
+var lperdaydata = [litresperday];
+var layout = {
+  title: 'Litres Vs Day',
+  xaxis: {
+    title: 'Day'
+  },
+  yaxis: {
+    title: 'Litres'
+  }
+};
+Plotly.newPlot('Div8', lperdaydata, layout);
 
 
 var data = [temperatureVStime];
@@ -324,7 +350,7 @@ var layout = {
     title: 'Liters'
   }
 };
-Plotly.newPlot('Div7', data, layout);
+Plotly.newPlot('Div7', data6, layout);
 
 
 $(document).ready(function() {
@@ -372,11 +398,13 @@ $(document).ready(function(){
       {
         $("#statuspump").html("Pump Is : OFF");
         $("#statuspump").addClass('btn-danger');
+        $("#statuspump").removeClass('btn-success')
       }
     else 
      { 
         $("#statuspump").html("Pump Is : ON");
-        $("#statuspump").addClass('btn-primary');
+        $("#statuspump").removeClass('btn-danger');
+        $("#statuspump").addClass('btn-success');
     }
   }
   if(temperature.length >0)
