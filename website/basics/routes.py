@@ -9,6 +9,8 @@ from flask import flash, redirect, url_for
 from flask import render_template
 from basics import app
 from basics import db, data
+from basics.latdat import final_data
+
 
 
 def findDay(date): 
@@ -38,10 +40,20 @@ def get_data(uri, format="json"):
 
 
 def pushData():
-	threading.Timer(5,pushData).start()
-	t = get_data("http://139.59.42.21:8080/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_temperature/la")[1]
-	print(float(t))
-	data1 = data(temperature = t, humidity = 25, flow = 7, power = 56, current = 21, efficiency = 1);
+	threading.Timer(300,pushData).start()
+	print("Push Data Started")
+	i = final_data()
+	if i[5] == '':
+		i[5] = 0
+	if i[6] == '':
+		i[6] = 0
+	efficiency = 0
+	if float(i[6]) >0.5:
+			efficiency = (float(i[3])*20*60)/(367*float(i[6]))
+	data1 = data(temperature = i[1], humidity = i[2], flow = i[3], voltage = i[4], 
+		current = i[5], power=i[6], efficiency = efficiency, 
+		Time = i[0])
+	print(i[0])
 	db.session.add(data1)
 	db.session.commit()
 	print("commited")
@@ -50,7 +62,8 @@ def pushData():
 #routes are what we type into browser to get from one webpage to another 
 @app.route("/")
 def home():
-	# pushData()
+	pushData()
+	print("Bello World")
 	count = 0
 	data1 = data.query.all()
 	for j in data1:
@@ -65,6 +78,7 @@ def home():
 				str(data1[i].Time.day) + ' ' + str(data1[i].Time.hour) + ':' + 
 				str(data1[i].Time.minute) + ':' + str(data1[i].Time.second)
 				for i in range(count)]
+	print(data1[count-1].Time.minute)
 	# days	 = [str(data[i].weekday()) for i in range(count)]
 	weekday = []
 	for i in range(count):

@@ -43,9 +43,15 @@
 </nav> 
 
 
-<button id = "statuspump" class="btn btn-danger mt-3 mb-3 ml-3 "> Pump is : Off</button>
-<button id = "statusFailure" class="btn btn-success mt-3 mb-3 ml-3 ">Power: Normal</button>
-
+<div class="row">
+  <div class="col-md-6">
+  <button id = "statuspump" class="btn btn-danger mt-3 mb-3 ml-3 "> Pump is : Off</button>
+  <button id = "statusFailure" class="btn btn-success mt-3 mb-3 ml-3 ">Power: Normal</button>
+</div>
+<div class="mr-auto col-md-6">
+  <button id="lastUpdate" class="btn btn-dark mt-3 mb-3 ml-auto "></button>
+</div>
+</div>
   
   
   <div class = "row mt-2">
@@ -71,8 +77,9 @@
 
   <div class = "col-md-6 border border-secondary">
       <button type="button" id = "Button4" class="btn btn-primary mt-3 mb-3" value = "4" state ="0">Power Vs Time</button> 
+      <button type="button" id = "statuspower" class="btn btn-warning ml-3">Status</button>
        <div id="Div4"></div>
-       <button type="button" id = "statuspower" class="btn btn-warning ml-3">Status</button>
+       
     </div>
   </div>
 
@@ -457,6 +464,11 @@ $(document).ready(function(){
       $("#statusFailure").addClass('btn-danger');
     }
   }
+
+  $(document).ready(function() {
+  $('#lastUpdate').html('Last Updated at time : ' + time[time.length-1])
+
+});
 
 
 });
