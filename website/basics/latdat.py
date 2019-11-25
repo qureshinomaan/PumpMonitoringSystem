@@ -38,11 +38,11 @@ def convert_to_time(ctime):
 	return datetime_object + timedelta(hours=5,minutes=30)
 
 def final_data():
-    time = convert_to_time(get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_temperature/la")[0])
-    temperature = get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_temperature/la")[1]
-    humidity = get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_rh/la")[1]
-    flow = get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/fm/fm_1_pump_flowrate/la")[1]
-    power = get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/em/em_1_watts_total/la")[1]
-    current = get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/em/em_1_current_total/la")[1]
-    voltage = get_data_grp("http://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/em/em_1_vll_avg/la")[1]
+    time = convert_to_time(get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_temperature/la")[0])
+    temperature = get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_temperature/la")[1]
+    humidity = get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/oe/oe_1_rh/la")[1]
+    flow = get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/fm/fm_1_pump_flowrate/la")[1]
+    power = get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/em/em_1_watts_total/la")[1]
+    current = get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/em/em_1_current_total/la")[1]
+    voltage = get_data_grp("https://onem2m.iiit.ac.in:443/~/in-cse/in-name/Team9_Pumps_performance_monitoring/pr_4_esp32_1/em/em_1_vll_avg/la")[1]
     return [time, temperature, humidity, flow, voltage, current, power]

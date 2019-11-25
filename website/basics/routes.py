@@ -47,6 +47,8 @@ def pushData():
 		i[5] = 0
 	if i[6] == '':
 		i[6] = 0
+	if i[4] == '':
+		i[4] = 0
 	efficiency = 0
 	if float(i[6]) >0.5:
 			efficiency = (float(i[3])*20*60)/(367*float(i[6]))

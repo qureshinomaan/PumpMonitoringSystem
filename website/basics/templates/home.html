@@ -44,11 +44,11 @@
 
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-8">
   <button id = "statuspump" class="btn btn-danger mt-3 mb-3 ml-3 "> Pump is : Off</button>
   <button id = "statusFailure" class="btn btn-success mt-3 mb-3 ml-3 ">Power: Normal</button>
 </div>
-<div class="mr-auto col-md-6">
+<div class="mr-auto col-md-4">
   <button id="lastUpdate" class="btn btn-dark mt-3 mb-3 ml-auto "></button>
 </div>
 </div>
@@ -56,22 +56,43 @@
   
   <div class = "row mt-2">
     <div class = "col-md-6 mr-auto border border-secondary " >
+    <div class="row">
+      <div class="col-md-9">
       <button type="button" id = "Button1" class="btn btn-primary mt-3 ml-3 mb-3" value = "1" state ="0">Temperature Vs Time</button> 
       <button id = "statustemp" class="btn mt-3 mb-3 ml-3 "></button>
+    </div>
+    <div class="col-md-3">
+      <button id = "tempnow" class="btn btn-secondary mt-3 mb-3 ml-3 "></button>
+    </div>
+  </div>
        <div id="Div1"></div>
     </div>
 
   <div class = "col-md-6 col-sm-12 border border-secondary">
+    <div class="row">
+      <div class="col-md-9">
       <button type="button" id = "Button2" class="btn btn-primary mt-3 mb-3 " value = "2" state ="0">Humidity Vs Time</button> 
       <button type="button" id = "statushumidity" class="btn ml-3"></button>
+    </div>
+    <div class="col-md-3">
+      <button id = "humidnow" class="btn btn-secondary mt-3 mb-3 ml-3 "></button>
+    </div>
+  </div>
        <div id="Div2"></div>
     </div>
   </div>
 
   <div class = "row">
     <div class = "col-md-6 col-sm-12 mr-auto border border-secondary" >
+    <div class="row">
+      <div class="col-md-9">
       <button type="button" id = "Button3" class="btn btn-primary mt-3 ml-3 mb-3" value = "3" state ="0">Flow Vs Time</button> 
       <button type="button" id = "statusflow" class="btn ml-5">Status</button>
+    </div>
+    <div class="col-md-3">
+      <button id = "flownow" class="btn btn-secondary mt-3 mb-3 ml-3 "></button>
+    </div>
+    </div>
        <div id="Div3"></div>
     </div>
 
@@ -127,15 +148,16 @@ $(document).ready(function(){
   $("button").click(function(){
     var div = $(this).attr('value');
     var state = $(this).attr('state')
-    
-    if(state == 0)
+    console.log(div);
+
+    if(state == 0 && div!=undefined)
       {
         $(this).removeClass('btn-primary')
         $(this).addClass('btn-success');
         $(this).attr('state',1);
         $("#Div"+div).slideDown();
       }
-    else 
+    else if(div!=undefined)
       {
         $(this).attr('state',0);
         $(this).removeClass('btn-success')
@@ -373,20 +395,32 @@ $(document).ready(function() {
 $(document).ready(function(){
   if(efficiency.length>0)
   {
-    if(efficiency[efficiency.length-1] > 0.75 && current[current.length]<0.5)
+    if(efficiency[efficiency.length-1] > 0.75 && current[current.length-1]>0.5)
       {
+        $("#statuse").removeClass('btn-dark');
+        $("#statuse").removeClass('btn-warning');
+        $("#statuse").removeClass('btn-danger');
         $("#statuse").addClass('btn-primary');
+
+        $("#statusflow").removeClass('btn-dark');
+        $("#statusflow").removeClass('btn-warning');
+        $("#statusflow").removeClass('btn-danger');
         $("#statusflow").addClass('btn-primary');
-        $("#statusliters").addClass('btn-primary')
+        
+        $("#statuslitres").removeClass('btn-dark');
+        $("#statuslitres").removeClass('btn-warning');
+        $("#statuslitres").removeClass('btn-danger');
+        $("#statusliters").addClass('btn-primary');
       }
-    else if(efficiency[efficiency.length-1] > 0.5 && current[current.length]<0.5)
+    else if(efficiency[efficiency.length-1] > 0.5 && current[current.length-1]>0.5)
       {
         $("#statuse").addClass('btn-warning');
         $("#statusflow").addClass('btn-warning');
         $("#statusliters").addClass('btn-warning')
       }
-    else if(efficiency[efficiency.length-1] <= 0.5 && current[current.length]<0.5)
+    else if(efficiency[efficiency.length-1] <= 0.5 && current[current.length-1]>0.5)
       {
+        console
         $("#statuse").addClass('btn-danger');
         $("#statusflow").addClass('btn-danger');
         $("#statusliters").addClass('btn-danger')
@@ -466,8 +500,10 @@ $(document).ready(function(){
   }
 
   $(document).ready(function() {
-  $('#lastUpdate').html('Last Updated at time : ' + time[time.length-1])
-
+  $('#lastUpdate').html('Last Updated at time : ' + time[time.length-1]);
+  $("#tempnow").html(temperature[temperature.length-1]+'°C');
+  $("#flownow").html(flow[flow.length-1]+'l/min');
+  $("#humidnow").html(humidity[temperature.length-1]+'%');
 });
 
 
