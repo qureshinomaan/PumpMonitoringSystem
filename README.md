@@ -5,7 +5,7 @@ ESW Course Project.
 In order to avoid possible merge conflicts and using git to its maximum advantage. Please follow these [guidelines](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/). Add all project requirements in issues for better tracking.
 
 ## Objective 
-This document provides comprehensive guidelines and step-by-step instructions for working with the project: Pump performance monitoring system.
+To design a robust pump monitoring system through which user can know about the status of their water pump.  
 
 ## Scope 
 This project is meant to be used by people who want to monitor their pump’s power, energy vs flow, temperature and humidity of the area and provide appropriate analytics based on the data collected. This will be useful in areas where we have limited power supply and have to critically manage energy. Also we will be able to detect power failures and compromises to the pump performance.
