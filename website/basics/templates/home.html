@@ -121,7 +121,7 @@
   <div class = "row">
     <div class = "col-md-6 col-sm-12 mr-auto border border-secondary" >
       <button type="button" id = "Button7" class="btn btn-primary mt-3 ml-3 mb-3" value = "7" state ="0">Litres Vs Time</button> 
-      <button type="button" id = "statusliters" class="btn btn-warning ml-3">Status</button> 
+      <button type="button" id = "statusliters" class="btn btn-warning ml-5">Status</button> 
        <div id="Div7"></div>
     </div>
 
@@ -414,8 +414,19 @@ $(document).ready(function(){
       }
     else if(efficiency[efficiency.length-1] > 0.5 && current[current.length-1]>0.5)
       {
+        $("#statuslitres").removeClass('btn-dark');
+        $("#statuslitres").removeClass('btn-warning');
+        $("#statuslitres").removeClass('btn-primary');
         $("#statuse").addClass('btn-warning');
+
+        $("#statusflow").removeClass('btn-dark');
+        $("#statusflow").removeClass('btn-warning');
+        $("#statusflow").removeClass('btn-primary');
         $("#statusflow").addClass('btn-warning');
+
+        $("#statuslitres").removeClass('btn-dark');
+        $("#statuslitres").removeClass('btn-warning');
+        $("#statuslitres").removeClass('btn-primary');
         $("#statusliters").addClass('btn-warning')
       }
     else if(efficiency[efficiency.length-1] <= 0.5 && current[current.length-1]>0.5)
@@ -492,7 +503,7 @@ $(document).ready(function(){
 
   if(power.length > 0)
   {
-    if(power[power.length-1] > 1000 && current[current.length-1] < 0.5)
+    if(power[power.length-1] < 1000 && flow[flow.length-1] > 0)
     {
       $("#statusFailure").html('Power:Failure');
       $("#statusFailure").addClass('btn-danger');

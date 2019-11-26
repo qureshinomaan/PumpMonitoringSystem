@@ -40,7 +40,7 @@ def get_data(uri, format="json"):
 
 
 def pushData():
-	threading.Timer(300,pushData).start()
+	#threading.Timer(300,pushData).start()
 	print("Push Data Started")
 	i = final_data()
 	if i[5] == '':
@@ -64,7 +64,7 @@ def pushData():
 #routes are what we type into browser to get from one webpage to another 
 @app.route("/")
 def home():
-	pushData()
+	#pushData()
 	print("Bello World")
 	count = 0
 	data1 = data.query.all()
